@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+import "commonQuiz.proto";
+
+option java_multiple_files = true;
+option java_package = "com.kotlang.quiz";
+option java_outer_classname = "ContestInternal";
+
+option go_package = "github.com/Kotlang/quizGo/generated";
+
+package quiz;
+
+service Contest {
+  rpc CreateContest(CreateContestRequest) returns (ContestDetail) {}
+  rpc addQuestionsToContest(AddQuestionsRequest) returns (ContestDetail) {}
+  rpc makeContestLive(MakeContestLiveRequest) returns (ContestDetail) {}
+  rpc getDraftContests(DraftContestRequest) returns (DraftContestResponse) {}
+  rpc getLiveContests(LiveContestsFilters) returns (LiveContests) {}
+}
+
+message CreateContestRequest {
+  string subjectName = 1;
+  string topic = 2;
+  string name = 3;
+}
+
+message AddQuestionsRequest {
+  string contestId = 1;
+  repeated QuestionDetail questions = 2;
+}
+
+message MakeContestLiveRequest {
+  string contestId = 1;
+}
+
+message DraftContestRequest {}
+message DraftContestResponse {
+  repeated ContestDetail drafts = 1;
+}
+
+message LiveContestsFilters {
+  string topic = 1;
+  string subject = 2;
+}
+
+message LiveContests {
+  repeated ContestDetail liveContests = 1;
+}

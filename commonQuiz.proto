@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.kotlang.quiz";
+option java_outer_classname = "CommonInternal";
+
+option go_package = "github.com/Kotlang/quizGo/generated";
+
+package quiz;
+
+message QuestionDetail {
+  string question = 1;
+  repeated string options = 2;
+  string answer = 3;
+  string explanation = 4;
+  string imageUrl = 5;
+  int32 timer = 6;
+  int32 marks = 7;
+  string id = 8;
+}
+
+message UserProfile {
+    string name = 1;
+    string email = 2;
+    string id = 3;
+    string photoUrl = 4;
+}
+
+message ContestDetail {
+  string id = 1;
+  string subject = 2;
+  string name = 3;
+  UserProfile author = 4;
+  string topic = 5;
+  bool isLive = 6;
+  int64 createdOn = 7;
+  string contestImageUrl = 8;
+  repeated QuestionDetail questions = 9;
+  string authorId = 10;
+  int32 numParticipants = 11;
+}
+
+message ContestResponseDetail {
+  string answer = 1;
+  bool isCorrect = 2;
+  string correctAnswer = 3;
+}
+
+message ContestParticipationDetail {
+  string contestId = 1;
+  int32 securedScore = 2;
+  int32 totalScore = 3;
+  int32 rating = 4;
+  string comments = 5;
+  int64 createdOn = 6;
+  repeated ContestResponseDetail response = 7;
+  string id = 8;
+  ContestDetail contest = 9;
+}
+
+message UserStats {
+  int32 numContestsParticipated = 1;
+  int32 numContestsCreated = 2;
+  int32 rating = 3;
+}
+
+message AccountDetail {
+  UserProfile profile = 1;
+  UserStats stats = 2;
+}
