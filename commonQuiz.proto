@@ -31,7 +31,7 @@ message ContestDetail {
   string name = 3;
   UserProfile author = 4;
   string topic = 5;
-  bool isLive = 6;
+  string status = 6;
   int64 createdOn = 7;
   string contestImageUrl = 8;
   repeated QuestionDetail questions = 9;
