@@ -29,13 +29,12 @@ message ContestDetail {
   string id = 1;
   string subject = 2;
   string name = 3;
-  UserProfile author = 4;
+  UserProfile authorProfile = 4;
   string topic = 5;
   string status = 6;
   int64 createdOn = 7;
   string contestImageUrl = 8;
   repeated QuestionDetail questions = 9;
-  string authorId = 10;
   int32 numParticipants = 11;
 }
 
