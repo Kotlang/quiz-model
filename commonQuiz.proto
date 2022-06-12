@@ -16,7 +16,6 @@ message QuestionDetail {
   string imageUrl = 5;
   int32 timer = 6;
   int32 marks = 7;
-  string id = 8;
 }
 
 message UserProfile {
